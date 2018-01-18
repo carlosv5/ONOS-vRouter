@@ -31,19 +31,24 @@ Author:      Raúl Álvarez Pinilla
   <!-- virbr0 (192.168.122.0/24) -->
   <net name="virbr0" mode="virtual_bridge" managed="no"/>
   <!-- Lan00 (10.0.0.0/24) -->
-  <net name="Lan00" mode="virtual_bridge"/>
+  <net name="Lan00" mode="openvswitch"/>
   <!-- Lan11 (10.1.1.0/24) -->
-  <net name="Lan11" mode="virtual_bridge"/>
+  <net name="Lan11" mode="openvswitch"/>
   <!-- Lan12 (10.1.2.0/24) -->
-  <net name="Lan12" mode="virtual_bridge"/>
+  <net name="Lan12" mode="openvswitch"/>
   <!-- Lan21 (10.2.1.0/24) -->
-  <net name="Lan21" mode="virtual_bridge"/>
+  <net name="Lan21" mode="openvswitch"/>
   <!-- LanMgmt11 (10.1.11.0/24) -->
   <net name="LanMgmt11" mode="virtual_bridge"/>
   <!-- LanMgmt12 (10.1.12.0/24) -->
   <net name="LanMgmt12" mode="virtual_bridge"/>
-  <!-- LanQuagga -->
-  <net name="LanQuagga" mode="virtual_bridge"/>
+  <!-- LanQuagga
+  <net name="LanQuagga" mode="virtual_bridge"/>-->
+  <!-- vRouter (/24) -->
+  <net name="vRouter" mode="openvswitch" hwaddr="00:00:00:00:00:01" controller='tcp:10.1.11.2:6633' of_version="OpenFlow10" fail_mode='secure'>
+    <connection name='vRouter-Lan11' net='Lan11'/>
+    <connection name='vRouter-Lan00' net='Lan00'/>
+  </net>
 
   <!-- CLIENT 1 -->
   <vm name="client-1" type="lxc" arch="x86_64">
@@ -118,7 +123,7 @@ Author:      Raúl Álvarez Pinilla
   <vm name="quagga" type="lxc" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
-    <if id="1" net="LanQuagga"/>
+    <if id="1" net="vRouter"/>
     <if id="2" net="LanMgmt12">
       <ipv4>10.1.12.1/24</ipv4>
       <ipv6>2001:db8:1:12::1/64</ipv6>
@@ -137,13 +142,13 @@ Author:      Raúl Álvarez Pinilla
     </exec>
   </vm>
 
-  <!-- vROUTER -->
+  <!-- vROUTER
   <vm name="vRouter" type="lxc" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
-    <mem>2G</mem>
-    <if id="1" net="Lan00"/> <!-- 10.0.0.1/24 (Configured in ONOS) -->
-    <if id="2" net="Lan11"/> <!-- 10.1.1.1/24 (Configured in ONOS) -->
-    <if id="3" net="LanQuagga"/>
+    <mem>2G</mem> -->
+<!--    <if id="1" net="Lan00"/> --><!-- 10.0.0.1/24 (Configured in ONOS) -->
+ <!--   <if id="2" net="Lan11"/> --><!-- 10.1.1.1/24 (Configured in ONOS) -->
+<!--    <if id="3" net="LanQuagga"/>
     <if id="4" net="LanMgmt11">
       <ipv4>10.1.11.1/24</ipv4>
       <ipv6>2001:db8:1:11::1/64</ipv6>
@@ -151,14 +156,14 @@ Author:      Raúl Álvarez Pinilla
     <if id="9" net="virbr0">
       <ipv4>dhcp</ipv4>
     </if>
-
+-->
     <!-- Copy configuration files -->
-    <filetree seq="on_boot" root="/root/conf/">conf/vRouter/</filetree>
+<!--    <filetree seq="on_boot" root="/root/conf/">conf/vRouter/</filetree>-->
     <!--<filetree seq="on_boot" root="/var/run/openvswitch/db.sock/">/var/run/openvswitch/db.sock/</filetree>-->
 
     <!-- Configure Open vSwitch -->
-    <exec seq="on_boot" type="verbatim">/root/conf/config-ovs.sh</exec>
-  </vm>
+<!--    <exec seq="on_boot" type="verbatim">/root/conf/config-ovs.sh</exec>
+  </vm>-->
 
   <!-- ROUTER (INTERNAL) -->
   <vm name="R-internal" type="lxc" arch="x86_64">
@@ -222,5 +227,11 @@ Author:      Raúl Álvarez Pinilla
         /root/conf/start-quagga.sh
     </exec>
   </vm>
+
+  <host>
+    <hostif net="LanMgmt11">
+       <ipv4>10.1.11.30/24</ipv4>
+    </hostif>
+  </host>
 
 </vnx>
