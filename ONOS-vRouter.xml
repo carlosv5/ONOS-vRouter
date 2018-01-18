@@ -10,6 +10,12 @@ Name:        ONOS-vRouter
 Description: Virtual scenario of vRouter service (ONOS/CORD Project)
 
 Author:      Raúl Álvarez Pinilla
+******************************************
+Modifications:
+	     Pablo Arias Oñate
+	     Ignacio Gómez Sáez
+	     David Murillo Ramos
+	     Carlos Vega García
 -->
 
 <vnx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,10 +44,10 @@ Author:      Raúl Álvarez Pinilla
   <net name="Lan12" mode="openvswitch"/>
   <!-- Lan21 (10.2.1.0/24) -->
   <net name="Lan21" mode="openvswitch"/>
-  <!-- LanMgmt11 (10.1.11.0/24) -->
-  <net name="LanMgmt11" mode="virtual_bridge"/>
+  <!-- LanMgmt11 (10.1.11.0/24) 
+  <net name="LanMgmt11" mode="virtual_bridge"/> -->
   <!-- LanMgmt12 (10.1.12.0/24) -->
-  <net name="LanMgmt12" mode="virtual_bridge"/>
+  <net name="LanMgmt" mode="virtual_bridge"/>
   <!-- LanQuagga
   <net name="LanQuagga" mode="virtual_bridge"/>-->
   <!-- vRouter (/24) -->
@@ -90,11 +96,11 @@ Author:      Raúl Álvarez Pinilla
   <vm name="ONOS" type="lxc" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
-    <if id="1" net="LanMgmt11">
+    <!--<if id="1" net="LanMgmt11">
       <ipv4>10.1.11.2/24</ipv4>
       <ipv6>2001:db8:1:11::2/64</ipv6>
-    </if>
-    <if id="2" net="LanMgmt12">
+    </if>-->
+    <if id="2" net="LanMgmt">
       <ipv4>10.1.12.2/24</ipv4>
       <ipv6>2001:db8:1:12::2/64</ipv6>
     </if>
@@ -124,7 +130,7 @@ Author:      Raúl Álvarez Pinilla
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="vRouter"/>
-    <if id="2" net="LanMgmt12">
+    <if id="2" net="LanMgmt">
       <ipv4>10.1.12.1/24</ipv4>
       <ipv6>2001:db8:1:12::1/64</ipv6>
     </if>
@@ -229,8 +235,8 @@ Author:      Raúl Álvarez Pinilla
   </vm>
 
   <host>
-    <hostif net="LanMgmt11">
-       <ipv4>10.1.11.30/24</ipv4>
+    <hostif net="LanMgmt">
+       <ipv4>10.1.12.3/24</ipv4>
     </hostif>
   </host>
 
