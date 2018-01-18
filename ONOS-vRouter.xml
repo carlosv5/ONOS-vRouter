@@ -47,7 +47,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- CLIENT 1 -->
   <vm name="client-1" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan12">
       <ipv4>10.1.2.2/24</ipv4>
@@ -65,7 +65,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- CLIENT 2 -->
   <vm name="client-2" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan21">
       <ipv4>10.2.1.2/24</ipv4>
@@ -83,7 +83,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- ONOS -->
   <vm name="ONOS" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="LanMgmt11">
       <ipv4>10.1.11.2/24</ipv4>
@@ -100,16 +100,23 @@ Author:      Raúl Álvarez Pinilla
     <!-- Copy configuration files -->
     <filetree seq="on_boot" root="/root/conf/">conf/ONOS/</filetree>
 
-    <!-- Configure ONOS -->
-    <exec seq="on_boot" type="verbatim">/root/conf/config-ONOS.sh</exec>
-
     <!-- Start ONOS -->
-    <exec seq="on_boot" type="verbatim">nohup /root/conf/start-ONOS.sh</exec>
+   <filetree seq="on_boot" root="/root/conf/">conf/ONOS/start-ONOS.sh</filetree>
+
+   <filetree seq="on_boot" root="/opt/onos/config/network-cfg.json">conf/ONOS/network-cfg.json</filetree>
+
+   <!-- Configure and Start ONOS (IPv4) -->
+   <exec seq="config-ONOS" type="verbatim">
+       echo 'alias onos-client=/opt/onos/karaf/bin/client' >> /root/.bashrc
+       /root/conf/start-ONOS.sh
+   </exec>
+
+
   </vm>
 
   <!-- Quagga Server -->
   <vm name="quagga" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="LanQuagga"/>
     <if id="2" net="LanMgmt12">
@@ -132,7 +139,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- vROUTER -->
   <vm name="vRouter" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan00"/> <!-- 10.0.0.1/24 (Configured in ONOS) -->
     <if id="2" net="Lan11"/> <!-- 10.1.1.1/24 (Configured in ONOS) -->
@@ -147,6 +154,7 @@ Author:      Raúl Álvarez Pinilla
 
     <!-- Copy configuration files -->
     <filetree seq="on_boot" root="/root/conf/">conf/vRouter/</filetree>
+    <!--<filetree seq="on_boot" root="/var/run/openvswitch/db.sock/">/var/run/openvswitch/db.sock/</filetree>-->
 
     <!-- Configure Open vSwitch -->
     <exec seq="on_boot" type="verbatim">/root/conf/config-ovs.sh</exec>
@@ -154,7 +162,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- ROUTER (INTERNAL) -->
   <vm name="R-internal" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan11">
       <ipv4>10.1.1.2/24</ipv4>
@@ -188,7 +196,7 @@ Author:      Raúl Álvarez Pinilla
 
   <!-- ROUTER (EXTERNAL) -->
   <vm name="R-external" type="lxc" arch="x86_64">
-    <filesystem type="cow">filesystems/rootfs_lxc_ubuntu64-ONOS-vRouter</filesystem>
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan00">
       <ipv4>10.0.0.2/24</ipv4>

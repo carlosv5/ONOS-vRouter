@@ -1,15 +1,13 @@
 #!/bin/bash
-
-# Load bashrc
-PS1='$ ' . ~/.bashrc
-
-cd $KARAF_ROOT; ./bin/start
-
-# Activate manually vRouter app (Karaf console)
-# app activate org.onosproject.vrouter
-
-# Deactivate manually vRouter app (Karaf console)
-# app deactivate org.onosproject.vrouter
-
-# Upload network configuration
-# onos-netcfg 127.0.0.1 /root/conf/network-cfg.json
+export ONOS_APPS="drivers,openflow,proxyarp,sdnip,reactive-routing"
+service onos start
+sleep 30
+/opt/onos/karaf/bin/client "app activate org.onosproject.drivers"
+sleep 10
+/opt/onos/karaf/bin/client "app activate org.onosproject.openflow"
+sleep 10
+/opt/onos/karaf/bin/client "app activate org.onosproject.proxyarp"
+sleep 10
+/opt/onos/karaf/bin/client "app activate org.onosproject.sdnip"
+sleep 10
+/opt/onos/karaf/bin/client "app activate org.onosproject.reactive-routing"
