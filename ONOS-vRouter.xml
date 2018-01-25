@@ -43,7 +43,7 @@ Modifications:
   <!-- Lan12 (10.1.2.0/24) -->
   <!--<net name="Lan12" mode="openvswitch">-->
   <!-- CPE (10.1.2.0/24) -->
-  <net name="CPE" mode="openvswitch" hwaddr="00:00:00:00:00:02" controller='tcp:10.1.12.2:6633' of_version="OpenFlow13" fail_mode='secure'/>
+  <net name="CPE" mode="openvswitch" hwaddr="00:00:00:00:00:02" />
   <!-- Lan21 (10.2.1.0/24) -->
   <net name="Lan21" mode="openvswitch"/> 
   <!-- LanMgmt11 (10.1.11.0/24) 
