@@ -69,10 +69,14 @@ Modifications:
     <if id="9" net="virbr0">
       <!--<ipv4>dhcp</ipv4>-->
     </if>
-
+    <filetree seq="on_boot" root="/root/conf/">conf/client-1-tests/</filetree>
     <!-- Configure gateway -->
     <exec seq="on_boot" type="verbatim">
         ip route replace default via 10.1.2.1
+	mv /etc/squid/squid.conf /etc/squid/squid.conf.bk
+	cp /root/conf/squid.conf /etc/squid/squid.conf
+	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
+	service squid start
     </exec>
   </vm>
 
@@ -87,10 +91,12 @@ Modifications:
     <if id="9" net="virbr0">
       <!--<ipv4>dhcp</ipv4>-->
     </if>
-
+    <filetree seq="on_boot" root="/root/conf/">conf/client-2-server/</filetree>
     <!-- Configure gateway -->
     <exec seq="on_boot" type="verbatim">
         ip route replace default via 10.2.1.1
+	cp /root/conf/*.html /var/www/html
+	service apache2 start
     </exec>
   </vm>
 
@@ -204,6 +210,10 @@ Modifications:
     <exec seq="on_boot" type="verbatim">
         cp /root/conf/*.conf /usr/local/etc/
         /root/conf/start-quagga.sh
+	mv /etc/squid/squid.conf /etc/squid/squid.conf.bk
+	cp /root/conf/squid.conf /etc/squid/squid.conf
+	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
+	service squid start
     </exec>
   </vm>
 
