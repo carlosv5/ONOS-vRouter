@@ -174,7 +174,7 @@ Modifications:
   </vm>-->
 
   <!-- ROUTER (INTERNAL) -->
-  <vm name="R-internal" type="lxc" arch="x86_64">
+  <vm name="vSG" type="lxc" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
     <if id="1" net="Lan11">
