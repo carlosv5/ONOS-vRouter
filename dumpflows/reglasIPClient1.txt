@@ -1,0 +1,27 @@
+OFPST_FLOW reply (OF1.3) (xid=0x2):
+ cookie=0x4200003934b216, duration=130.938s, table=0, n_packets=2, n_bytes=84, send_flow_rem priority=40002,arp,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,arp_spa=10.1.1.1 actions=CONTROLLER:65535,output:1
+ cookie=0x420000bb304bb0, duration=130.922s, table=0, n_packets=22, n_bytes=1824, send_flow_rem priority=40001,ip,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,nw_src=10.1.1.1 actions=output:1
+ cookie=0x4200000492f319, duration=130.880s, table=0, n_packets=3, n_bytes=126, send_flow_rem priority=40002,arp,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,arp_spa=10.0.0.1 actions=CONTROLLER:65535,output:2
+ cookie=0x4200000e635854, duration=130.863s, table=0, n_packets=7, n_bytes=734, send_flow_rem priority=40001,ip,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,nw_src=10.0.0.1 actions=output:2
+ cookie=0x42000026035f66, duration=130.914s, table=0, n_packets=1, n_bytes=42, send_flow_rem priority=40002,arp,in_port=1,vlan_tci=0x0000/0x1fff actions=CONTROLLER:65535,output:3
+ cookie=0x420000b5538ff1, duration=130.881s, table=0, n_packets=2, n_bytes=84, send_flow_rem priority=40002,arp,in_port=2,vlan_tci=0x0000/0x1fff actions=CONTROLLER:65535,output:3
+ cookie=0x4200009278662b, duration=130.948s, table=0, n_packets=4, n_bytes=332, send_flow_rem priority=40001,ip,in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01,nw_dst=10.1.1.1 actions=output:3
+ cookie=0x4200007da347eb, duration=130.880s, table=0, n_packets=10, n_bytes=919, send_flow_rem priority=40001,ip,in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01,nw_dst=10.0.0.1 actions=output:3
+ cookie=0x4200007fbc181b, duration=130.904s, table=0, n_packets=17, n_bytes=1470, send_flow_rem priority=40001,ip,in_port=1,vlan_tci=0x0000/0x1fff,nw_proto=89 actions=output:3
+ cookie=0x420000a082d684, duration=130.881s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40001,ip,in_port=2,vlan_tci=0x0000/0x1fff,nw_proto=89 actions=output:3
+ cookie=0x100007a585b6f, duration=191.493s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,dl_type=0x8942 actions=CONTROLLER:65535
+ cookie=0x100009465555a, duration=191.487s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x10000ea6f4b8e, duration=186.880s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,arp actions=CONTROLLER:65535
+ cookie=0x1000000ea1bfb, duration=142.114s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=5,arp actions=CONTROLLER:65535
+ cookie=0xe00008bf31aa9, duration=131.003s, table=0, n_packets=34, n_bytes=3332, send_flow_rem in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe000011ee0946, duration=130.987s, table=0, n_packets=34, n_bytes=3332, send_flow_rem in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe000052648fa5, duration=130.976s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=3,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe00005906f5fb, duration=130.992s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=01:00:5e:00:00:00/ff:ff:ff:80:00:00 actions=goto_table:1
+ cookie=0xe000073cad98b, duration=130.986s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=01:00:5e:00:00:00/ff:ff:ff:80:00:00 actions=goto_table:1
+ cookie=0x81000091d3dae5, duration=113.582s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=220,ip,in_port=2,nw_dst=10.1.2.0/24 actions=set_field:02:fd:00:00:04:01->eth_dst,output:1
+ cookie=0x8100002fafb9dd, duration=50.717s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=220,ip,in_port=1,nw_dst=10.2.1.0/24 actions=set_field:02:fd:00:00:05:01->eth_dst,output:2
+ cookie=0x8400008db945b9, duration=191.620s, table=0, n_packets=18, n_bytes=1380, send_flow_rem priority=0 actions=drop
+ cookie=0xe0000ef224aca, duration=113.576s, table=1, n_packets=34, n_bytes=3332, send_flow_rem priority=220,ip,nw_dst=10.1.2.0/24 actions=set_field:00:00:00:00:00:01->eth_src,set_field:02:fd:00:00:04:01->eth_dst,output:1
+ cookie=0xe000063344cee, duration=50.701s, table=1, n_packets=34, n_bytes=3332, send_flow_rem priority=220,ip,nw_dst=10.2.1.0/24 actions=set_field:00:00:00:00:00:01->eth_src,set_field:02:fd:00:00:05:01->eth_dst,output:2
+ cookie=0x1000029226b6a, duration=142.106s, table=1, n_packets=0, n_bytes=0, send_flow_rem priority=5,ip actions=CONTROLLER:65535
+ cookie=0x840000f545354b, duration=191.616s, table=1, n_packets=0, n_bytes=0, send_flow_rem priority=0 actions=drop

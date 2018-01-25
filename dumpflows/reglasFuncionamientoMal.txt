@@ -1,0 +1,25 @@
+OFPST_FLOW reply (OF1.3) (xid=0x2):
+ cookie=0x42000026035f66, duration=19.530s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40002,arp,in_port=1,vlan_tci=0x0000/0x1fff actions=CONTROLLER:65535,output:3
+ cookie=0x420000b5538ff1, duration=19.529s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40002,arp,in_port=2,vlan_tci=0x0000/0x1fff actions=CONTROLLER:65535,output:3
+ cookie=0x4200003934b216, duration=19.530s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40002,arp,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,arp_spa=10.1.1.1 actions=CONTROLLER:65535,output:2
+ cookie=0x4200000e635854, duration=19.528s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40001,ip,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,nw_src=10.0.0.1 actions=output:1
+ cookie=0x4200000492f319, duration=19.525s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40002,arp,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,arp_spa=10.0.0.1 actions=CONTROLLER:65535,output:1
+ cookie=0x420000bb304bb0, duration=19.508s, table=0, n_packets=2, n_bytes=164, send_flow_rem priority=40001,ip,in_port=3,vlan_tci=0x0000/0x1fff,dl_src=00:00:00:00:00:01,nw_src=10.1.1.1 actions=output:2
+ cookie=0x420000a082d684, duration=19.525s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40001,ip,in_port=2,vlan_tci=0x0000/0x1fff,nw_proto=89 actions=output:3
+ cookie=0x4200007fbc181b, duration=19.524s, table=0, n_packets=1, n_bytes=78, send_flow_rem priority=40001,ip,in_port=1,vlan_tci=0x0000/0x1fff,nw_proto=89 actions=output:3
+ cookie=0x420000812fc4a8, duration=19.513s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40001,ip,in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01,nw_dst=10.0.0.1 actions=output:3
+ cookie=0x42000038467bc8, duration=19.510s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40001,ip,in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01,nw_dst=10.1.1.1 actions=output:3
+ cookie=0x100009465555a, duration=20.565s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x100007a585b6f, duration=20.565s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,dl_type=0x8942 actions=CONTROLLER:65535
+ cookie=0x10000ea6f4b8e, duration=20.554s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=40000,arp actions=CONTROLLER:65535
+ cookie=0x1000000ea1bfb, duration=20.542s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=5,arp actions=CONTROLLER:65535
+ cookie=0xe000052648fa5, duration=19.526s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=3,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe00008bf31aa9, duration=19.511s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe000011ee0946, duration=19.511s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=00:00:00:00:00:01 actions=goto_table:1
+ cookie=0xe00005906f5fb, duration=19.509s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=1,vlan_tci=0x0000/0x1fff,dl_dst=01:00:5e:00:00:00/ff:ff:ff:80:00:00 actions=goto_table:1
+ cookie=0xe000073cad98b, duration=19.507s, table=0, n_packets=0, n_bytes=0, send_flow_rem in_port=2,vlan_tci=0x0000/0x1fff,dl_dst=01:00:5e:00:00:00/ff:ff:ff:80:00:00 actions=goto_table:1
+ cookie=0x7300004d510a89, duration=19.531s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=10,in_port=2,dl_src=02:fd:00:00:05:01,dl_dst=00:00:00:00:00:01 actions=output:3
+ cookie=0x7300008dc09e21, duration=19.527s, table=0, n_packets=0, n_bytes=0, send_flow_rem priority=10,in_port=1,dl_src=02:fd:00:00:04:01,dl_dst=00:00:00:00:00:01 actions=output:3
+ cookie=0x8400008db945b9, duration=20.565s, table=0, n_packets=1, n_bytes=78, send_flow_rem priority=0 actions=drop
+ cookie=0x1000029226b6a, duration=20.556s, table=1, n_packets=0, n_bytes=0, send_flow_rem priority=5,ip actions=CONTROLLER:65535
+ cookie=0x840000f545354b, duration=20.565s, table=1, n_packets=0, n_bytes=0, send_flow_rem priority=0 actions=drop
