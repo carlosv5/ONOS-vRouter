@@ -77,6 +77,7 @@ Modifications:
 	cp /root/conf/squid.conf /etc/squid/squid.conf
 	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
 	service squid start
+	service squid restart
     </exec>
   </vm>
 
@@ -214,6 +215,7 @@ Modifications:
 	cp /root/conf/squid.conf /etc/squid/squid.conf
 	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
 	service squid start
+	service squid restart
     </exec>
   </vm>
 
