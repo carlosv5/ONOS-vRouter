@@ -73,6 +73,24 @@ Modifications:
     <!-- Configure gateway -->
     <exec seq="on_boot" type="verbatim">
         ip route replace default via 10.1.2.1
+    </exec>
+  </vm>
+
+  <!-- Squid -->
+  <vm name="squid" type="lxc" arch="x86_64">
+    <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
+    <mem>2G</mem>
+    <if id="1" net="CPE">
+      <ipv4>10.1.2.3/24</ipv4>
+     <!--  <ipv6>2001:db8:1:2::2/64</ipv6>-->
+    </if>
+    <if id="9" net="virbr0">
+      <!--<ipv4>dhcp</ipv4>-->
+    </if>
+    <filetree seq="on_boot" root="/root/conf/">conf/squid/</filetree>
+    <!-- Configure gateway -->
+    <exec seq="on_boot" type="verbatim">
+        ip route replace default via 10.1.2.1
 	mv /etc/squid/squid.conf /etc/squid/squid.conf.bk
 	cp /root/conf/squid.conf /etc/squid/squid.conf
 	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
@@ -180,7 +198,7 @@ Modifications:
 <!--    <exec seq="on_boot" type="verbatim">/root/conf/config-ovs.sh</exec>
   </vm>-->
 
-  <!-- ROUTER (INTERNAL) -->
+  <!-- vSG -->
   <vm name="vSG" type="lxc" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc_onos</filesystem>
     <mem>2G</mem>
@@ -211,11 +229,6 @@ Modifications:
     <exec seq="on_boot" type="verbatim">
         cp /root/conf/*.conf /usr/local/etc/
         /root/conf/start-quagga.sh
-	mv /etc/squid/squid.conf /etc/squid/squid.conf.bk
-	cp /root/conf/squid.conf /etc/squid/squid.conf
-	cp /root/conf/ERR_PARENTAL /usr/share/squid/errors/templates/
-	service squid start
-	service squid restart
     </exec>
   </vm>
 
